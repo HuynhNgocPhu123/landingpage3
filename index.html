@@ -1563,7 +1563,7 @@
 /* Nút đăng ký */
 #subscribe-form button[type="submit"] {
   padding: 12px 24px;
-  background-color: #ffc107;
+  background-color: #57a57d;
   color: #000;
   font-size: 16px;
   font-weight: bold;
@@ -1571,6 +1571,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  width: 70%;
 }
 
 #subscribe-form button[type="submit"]:hover {
@@ -1617,10 +1618,45 @@
     margin-top: 10px;
   }
 }
+/* bóng bay*/
+.floating-bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* để không ảnh hưởng tương tác */
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble-floating {
+  position: absolute;
+  bottom: -60px;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ffffffcc, #00c9a755);
+  border-radius: 50%;
+  animation: float-bubble 10s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes float-bubble {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
 
   </style>
 </head>
 <body>
+  <div class="floating-bubbles-container"></div>
+
 <nav>
   <div class="nav-left">
     <a href="" class="logo">
@@ -2278,4 +2314,27 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => alertBox.classList.add("hidden"), 400);
     }, 4000);
   }
+</script>
+<script>
+  const container = document.querySelector('.floating-bubbles-container');
+
+  function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble-floating');
+
+    const size = Math.random() * 20 + 10; // 10–30px
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = Math.random() * 100 + 'vw';
+    bubble.style.animationDuration = Math.random() * 8 + 6 + 's'; // 6–14s
+
+    container.appendChild(bubble);
+
+    setTimeout(() => {
+      bubble.remove();
+    }, 15000);
+  }
+
+  // Tạo bong bóng liên tục mỗi 500ms
+  setInterval(createBubble, 500);
 </script>
