@@ -66,7 +66,7 @@
     }
 
     .nav-center li a:hover {
-    background-color: #73c561;
+    background-color: #eff4c9;
     color: #000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
@@ -339,7 +339,7 @@
       display: block;
       width: 60px;
       height: 4px;
-      background-color: #ffc107;
+      
       margin-top: 10px;
     }
 
@@ -478,9 +478,9 @@
   box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
 }
 
+/* Sản Phẩm */
 
-
-    .features {
+  .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
@@ -657,7 +657,16 @@
   0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
   50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
 }
-
+@media (max-width: 576px) {
+  #sanpham {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  #sanpham {
+    display: none !important;
+  }
+}
 /*Công dụng */
 .benefit-section {
   background: linear-gradient(135deg, #fff8e1, #ffe082);
@@ -1371,26 +1380,6 @@
     height: 50px;
   }
 }
-
-    .form-section {
-      background: #007bff;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .form-section h2 { margin-bottom: 20px; }
-    form input, form button {
-      padding: 10px;
-      margin: 10px 5px;
-      border: none;
-      border-radius: 5px;
-    }
-    form input { width: 200px; }
-    form button {
-      background: #fff;
-      color: #007bff;
-      cursor: pointer;
-    }
     footer {
       text-align: center;
       background: #333;
@@ -1553,6 +1542,82 @@
     opacity: 1;
   }
 }
+
+/* Phần input email */
+#subscribe-form input[type="email"] {
+  width: 68%;
+  max-width: 280px;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#subscribe-form input[type="email"]:focus {
+  border-color: #00c9a7;
+  box-shadow: 0 0 8px rgba(0, 201, 167, 0.4);
+}
+
+/* Nút đăng ký */
+#subscribe-form button[type="submit"] {
+  padding: 12px 24px;
+  background-color: #ffc107;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#subscribe-form button[type="submit"]:hover {
+  background-color: #e6ac00;
+  transform: translateY(-2px);
+}
+
+/* Alert sau khi đăng ký */
+.custom-alert {
+  background: linear-gradient(135deg, #00c9a7, #92fe9d);
+  color: #000;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: slideFadeIn 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-alert.hidden {
+  display: none;
+}
+
+/* Responsive nhỏ hơn 400px */
+@media (max-width: 400px) {
+  #subscribe-form input[type="email"] {
+    width: 100%;
+  }
+
+  #subscribe-form button[type="submit"] {
+    width: 88%;
+    margin-top: 10px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1660,7 +1725,7 @@
   </div>
 </section>
 
-</section>
+
 
 <section class="benefit-section" id="congdung">
   <h2 class="animate-on-scroll">Công dụng kính cường lực</h2>
@@ -1844,9 +1909,49 @@
     </div>
   </div>
 </section>
-  <footer>
-    © EMC | Hotline: 19006789 | Zalo / Facebook / Email | Design by Phu
-  </footer>
+<footer style="background-color: #1f1f1f; color: #fff; padding: 40px 20px; text-align: center;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; max-width: 1200px; margin: auto;">
+    
+    <!-- Địa chỉ -->
+    <div style="flex: 1; min-width: 250px;">
+      <h3>Công ty EMC</h3>
+      <p>Địa chỉ: Tòa nhà EMC, Số 12 Duy Tân, Cầu Giấy, Hà Nội</p>
+      
+    </div>
+
+    <!-- Liên hệ -->
+    <div style="flex: 1; min-width: 250px;">
+      <h3>Thông tin liên hệ</h3>
+      <p>Hotline: <a href="tel:19006789" style="color: #ffc107;">1900 6789</a></p>
+      <p>Email: <a href="mailto:lienhe@emc.vn" style="color: #ffc107;">info@emcgroup.com.vn</a></p>
+    </div>
+
+    <!-- Giờ làm việc -->
+    <div style="flex: 1; min-width: 250px;">
+      <h3> Giờ làm việc</h3>
+      <p>Thứ 2 – Thứ 6: 9:00 – 17:30</p>
+      <p>Thứ 7: 9:00 - 12:00</p>
+      <p>Chủ Nhật & Lễ: Nghỉ</p>
+    </div>
+
+    <!-- Đăng ký nhận tin -->
+    <div style="flex: 1; min-width: 250px;">
+      <h3> Nhận thông báo giảm giá</h3>
+      <div id="email-alert" class="custom-alert hidden">🎉 Đăng ký thành công! Cảm ơn bạn đã quan tâm.</div>
+        <form id="subscribe-form" onsubmit="showCustomAlert(); return false;">
+          <input type="email" placeholder="Nhập email của bạn" required>
+          <br><br>
+          <button type="submit">Đăng ký</button>
+        </form>
+    </div>
+
+  </div>
+
+  <hr style="margin: 40px auto; width: 80%; border: 1px solid rgba(255,255,255,0.1);">
+
+  <p style="font-size: 14px;">© 2025 EMC. Thiết kế bởi Phu | Mọi quyền được bảo lưu.</p>
+</footer>
+
 </body>
 </html>
 <script>
@@ -2148,4 +2253,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 </script>
+<script>
+  function showCustomAlert() {
+    const alertBox = document.getElementById("email-alert");
+    alertBox.classList.remove("hidden");
+    alertBox.style.opacity = "1";
+    // Ẩn sau 4 giây
+    setTimeout(() => {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.classList.add("hidden"), 400);
+    }, 4000);
+  }
+</script>
 
+<script>
+  function showCustomAlert() {
+    const alertBox = document.getElementById("email-alert");
+    alertBox.classList.remove("hidden");
+    alertBox.style.opacity = "1";
+      // Reset form
+    form.reset();
+    setTimeout(() => {
+      alertBox.style.opacity = "0";
+      setTimeout(() => alertBox.classList.add("hidden"), 400);
+    }, 4000);
+  }
+</script>
